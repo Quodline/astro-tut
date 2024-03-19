@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Greeting from '../components/Greeting';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 ---
@@ -13,12 +14,13 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
 </head>
 <body>
-<Header />
-<h1>{pageTitle}</h1>
-<slot/>
-<Footer />
-<script>
-  import "../scripts/menu.js";
-</script>
+    <Header />
+    <h1>{pageTitle}</h1>
+    <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+    <slot/>
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
 </body>
 </html>
